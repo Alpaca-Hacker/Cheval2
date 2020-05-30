@@ -9,6 +9,7 @@ public:
     Colour(float r, float g, float b) : Tuple(r, g, b, 0.0f) {}
 
     float R() const { return this->X(); }
+    float G() const { return this->Y(); }
     float B() const { return this->Z(); }
 
     static Colour const& White() { static Colour c(1.f, 1.f, 1.f); return c; }
