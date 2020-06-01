@@ -47,6 +47,22 @@ Tuple Tuple::cross(const Tuple& a, const Tuple& b)
 				  a.X() * b.Y() - a.Y() * b.X());
 }
 
+bool operator==(const Tuple& first, const Tuple& other)
+{
+	return Equals(first.X(), other.X())
+		&& Equals(first.Y(), other.Y())
+		&& Equals(first.Z(), other.Z())
+		&& Equals(first.W(), other.W());
+}
+
+bool operator!=(const Tuple& first, const Tuple& other)
+{
+	return !(Equals(first.X(), other.X())
+		&& Equals(first.Y(), other.Y())
+		&& Equals(first.Z(), other.Z())
+		&& Equals(first.W(), other.W()));
+}
+
 
 bool Tuple::operator==(const Tuple& other)
 {

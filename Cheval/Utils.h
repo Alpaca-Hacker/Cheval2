@@ -1,6 +1,7 @@
 #pragma once
 #include <cmath>
 #include <algorithm>
+#include <functional>
 
 constexpr float EPSILON = 0.0001f;
 
@@ -19,3 +20,5 @@ Clamp(T value, T min, T max)
 {
     return std::max(min, std::min(max, value));
 }
+
+

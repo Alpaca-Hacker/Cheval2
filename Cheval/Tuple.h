@@ -57,4 +57,5 @@ inline Tuple operator*(Tuple const& a, Tuple const& b) { return APPLY_OPERATOR(a
 inline Tuple operator*(Tuple const& a, float b) { return { a.X() * b, a.Y() * b, a.Z() * b, a.W()}; }
 inline Tuple operator/(Tuple const& a, float b) { return a * (1.f / b); }
 inline Tuple operator-(Tuple const& t) { return { -t.X(), -t.Y(), -t.Z(), t.W() }; }
-
+bool operator==(const Tuple& first, const Tuple& other);
+bool operator!=(const Tuple& first, const Tuple& other);

@@ -50,14 +50,14 @@ int Canvas::write_file(char const* filename) const
 	return success;
 }
 
-void Canvas::write_pixel(uint32_t x, uint32_t y, Colour const& colour) const
+void Canvas::write_pixel(int x, int y, Colour const& colour) const
 {
 	if (x >= width_ || y >= height_) return; 
 
 	screen_[x + width_ * y] = colour;
 }
 
-Colour Canvas::pixel_at(uint32_t x, uint32_t y) const
+Colour Canvas::pixel_at(int x, int y) const
 {
 	return screen_[x + width_ * y];
 }
