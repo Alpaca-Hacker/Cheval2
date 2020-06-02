@@ -427,5 +427,212 @@ TEST(MatrixTests, DetOf4x4)
     EXPECT_EQ(a.determinant(), -4071);
 }
 
+/*
+ * Scenario: Testing a noninvertible matrix for invertibility
+   Given the following 4x4 matrix A:
+   | -4 | 2 | -2 | -3 |
+   | 9 | 6 | 2 | 6 |
+   | 0 | -5 | 1 | -5 |
+   | 0 | 0 | 0 | 0 |
+   Then determinant(A) = 0
+   And A is not invertible
+ */
+TEST(MatrixTests, NoninvertibleTest)
+{
+    const auto data = std::vector<float>{
+    -4, 2, -2, -3,
+    9, 6, 2, 6,
+    0,-5, 1,-5,
+    0, 0, 0, 0 };
+
+    auto a = Matrix(4, data);
+
+    EXPECT_FALSE(a.isInvertable());
+}
+
+/*
+ * Scenario: Testing an invertible matrix for invertibility
+   Given the following 4x4 matrix A:
+   | 6 | 4  | 4  |  4 |
+   | 5 | 5  | 7  |  6 |
+   | 4 | -9 | 3  | -7 |
+   | 9 | 1  | 7  | -6 |
+   Then determinant(A) = -2120
+   And A is invertible
+ */ 
+
+TEST(MatrixTests, InvertibleTest)
+{
+    const auto data = std::vector<float>{
+    6, 4, 4, 4,
+    5, 5, 7, 6,
+    4,-9, 3,-7,
+    9, 1, 7,-6 };
+
+    auto a = Matrix(4, data);
+	
+    EXPECT_EQ(a.determinant(), -2120);
+    EXPECT_TRUE(a.isInvertable());
+}
+
+/*
+ * Scenario: Calculating the inverse of a matrix
+   Given the following 4x4 matrix A:
+   | -5| 2 | 6 | -8|
+   | 1 | -5| 1 | 8 |
+   | 7 | 7 | -6| -7|
+   | 1 | -3| 7 | 4 |
+   And B ← inverse(A)
+   Then determinant(A) = 532
+   And cofactor(A, 2, 3) = -160
+   And B[3,2] = -160/532
+   And cofactor(A, 3, 2) = 105
+   And B[2,3] = 105/532
+   And B is the following 4x4 matrix:
+   | 0.21805  |  0.45113 |  0.24060 |-0.04511 |
+   | -0.80827 | -1.45677 | -0.44361 | 0.52068 |
+   | -0.07895 | -0.22368 | -0.05263 | 0.19737 |
+   | -0.52256 | -0.81391 | -0.30075 | 0.30639 |
+ */
+
+TEST(MatrixTests, InverseMatrixTest)
+{
+    const auto data = std::vector<float>{
+     -5, 2 ,  6, -8,
+     1 , -5,  1,  8,
+     7 , 7 , -6, -7,
+     1 , -3,  7,  4  };
+
+    auto a = Matrix(4, data);
+    auto b = a.inverse();
+
+    const auto expectedData = std::vector<float>{
+ 0.21805f , 0.45113f , 0.24060f ,-0.04511f,
+-0.80827f ,-1.45677f ,-0.44361f , 0.52068f,
+-0.07895f, -0.22368f, -0.05263f, 0.19737f,
+-0.52256f, -0.81391f, -0.30075f, 0.30639f
+    };
+
+    const auto expected = Matrix(4, expectedData);
+	
+    EXPECT_EQ(a.determinant(), 532);
+    EXPECT_EQ(a.cofactor(2,3), -160);
+    EXPECT_FLOAT_EQ(b(3, 2), -160.0f / 532.0f);
+    EXPECT_EQ(b, expected);
+}
+
+/*
+ * Scenario: Calculating the inverse of another matrix
+   Given the following 4x4 matrix A:
+   | 8 |-5| 9| 2 |
+   | 7 | 5| 6| 1 |
+   | -6| 0| 9| 6 |
+   | -3| 0|-9|-4 |
+   Then inverse(A) is the following 4x4 matrix:
+   | -0.15385 | -0.15385 | -0.28205 | -0.53846 |
+   | -0.07692 | 0.12308  | 0.02564  | 0.03077  |
+   | 0.35897  | 0.35897  | 0.43590  | 0.92308  |
+   | -0.69231 | -0.69231 | -0.76923 | -1.92308 |
+   */
+TEST(MatrixTests, InverseMatrixTest1)
+{
+    const auto data = std::vector<float>{
+      8 ,-5, 9, 2,
+      7 , 5, 6, 1,
+      -6, 0, 9, 6,
+      -3, 0,-9,-4 };
+
+    auto a = Matrix(4, data);
+    auto b = a.inverse();
+
+    const auto expectedData = std::vector<float>{
+-0.15385f, -0.15385f,-0.28205f,-0.53846f,
+-0.07692f,  0.12308f ,0.02564f ,0.03077f,
+0.35897f,   0.35897f ,0.43590f ,0.92308f,
+-0.69231f, -0.69231f,-0.76923f,-1.92308f
+    };
+
+    const auto expected = Matrix(4, expectedData);
+
+    EXPECT_EQ(b, expected);
+}
+
+/*
+Scenario: Calculating the inverse of a third matrix
+Given the following 4x4 matrix A:
+| 9  | 3 | 0 | 9 |
+| -5 | -2|-6 |-3 |
+| -4 | 9 | 6 | 4 |
+| -7 | 6 | 6 | 2 |
+Then inverse(A) is the following 4x4 matrix:
+| -0.04074 | -0.07778| 0.14444 |-0.22222 |
+| -0.07778 | 0.03333 | 0.36667 |-0.33333 |
+| -0.02901 | -0.14630|-0.10926 | 0.12963 |
+| 0.17778  | 0.06667 |-0.26667 | 0.33333 |
+*/
+TEST(MatrixTests, InverseMatrixTest2)
+{
+    const auto data = std::vector<float>{
+      9 ,3 , 0, 9,
+      -5,-2,-6,-3,
+      -4,9 , 6, 4,
+      -7,6 , 6, 2 };
+
+    auto a = Matrix(4, data);
+    auto b = a.inverse();
+
+    const auto expectedData = std::vector<float>{
+-0.04074f, -0.07778f, 0.14444f,-0.22222f,
+-0.07778f,  0.03333f ,0.36667f,-0.33333f,
+-0.02901f, -0.14630f,-0.10926f, 0.12963f,
+ 0.17778f , 0.06667f,-0.26667f, 0.33333f
+    };
+
+    const auto expected = Matrix(4, expectedData);
+
+    EXPECT_EQ(b, expected);
+}
+
+/*
+ * Scenario: Multiplying a product by its inverse
+   Given the following 4x4 matrix A:
+   | 3 | -9| 7 | 3 |
+   | 3 | -8| 2 |-9 |
+   | -4| 4 | 4 | 1 |
+   | -6| 5 |-1 | 1 |
+   And the following 4x4 matrix B:
+   | 8 | 2 | 2 | 2 |
+   | 3 |-1 | 7 | 0 |
+   | 7 | 0 | 5 | 4 |
+   | 6 |-2 | 0 | 5 |
+   And C ← A * B
+   Then C * inverse(B) = A
+ */
+
+TEST(MatrixTests, InverseMatrixTimesProduct)
+{
+    const auto data = std::vector<float>{
+      3 , -9, 7 , 3,
+      3 , -8, 2 ,-9,
+      -4, 4 , 4 , 1,
+      -6, 5 ,-1 , 1 };
+
+    auto a = Matrix(4, data);
+    const auto dataB = std::vector<float>{
+  8, 2,2,2,
+  3,-1,7,0,
+  7, 0,5,4,
+  6,-2,0,5 };
+
+    auto b= Matrix(4, dataB);
+	
+    auto c = a * b;
+
+    EXPECT_EQ(c*(b.inverse()), a);
+}
+
+
+
+
 
 

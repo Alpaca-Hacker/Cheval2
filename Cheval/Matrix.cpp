@@ -22,14 +22,14 @@ Matrix Matrix::transpose() const
 float Matrix::determinant() const
 {
 	auto M = Matrix(size_, data_);
-	auto result = 0;
+	auto result = 0.0f;
 	if (size_ == 2)
 	{
 		result = data_[0] * data_[3] - data_[1] * data_[2];
 	}
 	else
 	{
-		for (int i = 0; i < size_; i++)
+		for (unsigned i = 0; i < size_; i++)
 		{
 			result += M(0, i) * cofactor(0, i);
 		}

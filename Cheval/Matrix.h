@@ -8,17 +8,29 @@ class Matrix {
 public:
     Matrix(unsigned size);
     Matrix(unsigned size, std::vector<float> data);
+
+	~Matrix();
+	
     float& operator() (unsigned row, unsigned col);        
     float operator() (unsigned row, unsigned col) const;
-    Matrix transpose() const;
+    bool operator==(const Matrix& m) const;
+    bool operator!=(const Matrix& m) const;
+
+	Matrix transpose() const;
     float determinant() const;
     Matrix submatrix(unsigned row, unsigned col) const;
     float minor(unsigned row, unsigned col) const;
 	float cofactor(unsigned row, unsigned col) const;
+    Matrix inverse();
+
+    bool isInvertable()
+    {
+        return determinant() != 0;
+    }
+
     static auto identity() -> Matrix;
-    bool operator==(const Matrix& m) const;
-    bool operator!=(const Matrix& m) const;
-    ~Matrix();                           
+
+                          
 
     unsigned size() const;
 
@@ -27,6 +39,26 @@ private:
     std::vector<float> data_;
 	
 };
+
+inline Matrix Matrix::inverse()
+{
+	if (!isInvertable())
+	{
+        return *this; // TODO: Throw error!
+	}
+    auto newMatrix = Matrix(size_);
+	const auto det = determinant();
+	
+    for (unsigned row = 0; row < size_; row++)
+    {
+        for (unsigned column = 0; column < size_; column++)
+        {
+            auto cof = cofactor(row, column);
+            newMatrix(column, row) = cof / det;
+        }
+    }
+    return newMatrix;
+}
 
 
 inline
