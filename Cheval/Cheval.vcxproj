@@ -22,6 +22,7 @@
     <ClCompile Include="Canvas.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Matrix.cpp" />
+    <ClCompile Include="Ray.cpp" />
     <ClCompile Include="transforms.cpp" />
     <ClCompile Include="Tuple.cpp" />
     <ClCompile Include="Utils.cpp" />
@@ -30,6 +31,7 @@
     <ClInclude Include="Canvas.h" />
     <ClInclude Include="Colour.h" />
     <ClInclude Include="Matrix.h" />
+    <ClInclude Include="Ray.h" />
     <ClInclude Include="stb_image_write.h" />
     <ClInclude Include="transforms.h" />
     <ClInclude Include="Tuple.h" />
