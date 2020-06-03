@@ -1,3 +1,5 @@
+#include <functional>
+
 #include "Matrix.h"
 #include "Tuple.h"
 #include "Utils.h"

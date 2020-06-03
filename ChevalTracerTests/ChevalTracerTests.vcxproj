@@ -39,6 +39,7 @@
     <ClCompile Include="CanvasTests.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MatrixTests.cpp" />
+    <ClCompile Include="TransformTests.cpp" />
     <ClCompile Include="TupleTest.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
