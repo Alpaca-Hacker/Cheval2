@@ -1,6 +1,6 @@
 #include "pch.h"
 
-#include "../Cheval/Canvas.h"
+#include "../Cheval/src/Headers/Models/Canvas.h"
 
 TEST(CanvasTest, CanvasWritesCorrectly)
 {
@@ -12,9 +12,9 @@ TEST(CanvasTest, CanvasWritesCorrectly)
 	{
 		for (int i = 0; i < image_width; ++i)
 		{
-			auto r = static_cast<double>(i) / (image_width - 1.0f);
-			auto g = static_cast<double>(j) / (image_height - 1.0f);
-			auto b = 0.25;
+			auto r = static_cast<float>(i) / (image_width - 1.0f);
+			auto g = static_cast<float>(j) / (image_height - 1.0f);
+			auto b = 0.25f;
 
 			c.write_pixel(i, j, Colour(r, g, b));
 		}

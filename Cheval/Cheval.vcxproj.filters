@@ -13,54 +13,66 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Models">
+      <UniqueIdentifier>{eb1925d8-49d6-4db9-9fbd-83b63ef84d16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Helpers">
+      <UniqueIdentifier>{73f52089-7e25-4af4-b700-edfbb38a9eb7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Data Structures">
+      <UniqueIdentifier>{786d0b63-52a8-47e1-a44c-6de846d9b519}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\DataStructures">
+      <UniqueIdentifier>{571d3ebd-2767-4f35-9c20-d46438d6fa22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Helpers">
+      <UniqueIdentifier>{2c558b40-ce53-488c-a95b-89a7ec208e03}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Models">
+      <UniqueIdentifier>{374cea51-fea6-4fff-aa20-3b43e97a0f54}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="src\DataStructures\Tuple.cpp">
+      <Filter>Source Files\DataStructures</Filter>
     </ClCompile>
-    <ClCompile Include="Tuple.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="src\DataStructures\Matrix.cpp">
+      <Filter>Source Files\DataStructures</Filter>
     </ClCompile>
-    <ClCompile Include="Utils.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="src\DataStructures\Transforms.cpp">
+      <Filter>Source Files\DataStructures</Filter>
     </ClCompile>
-    <ClCompile Include="Canvas.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="src\Models\Canvas.cpp">
+      <Filter>Source Files\Models</Filter>
     </ClCompile>
-    <ClCompile Include="Matrix.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="transforms.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Ray.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="src\Models\Ray.cpp">
+      <Filter>Source Files\Models</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="stb_image_write.h">
+    <ClInclude Include="Headers\resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Tuple.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\Headers\DataStructures\Matrix.h">
+      <Filter>Header Files\Data Structures</Filter>
     </ClInclude>
-    <ClInclude Include="Utils.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\Headers\DataStructures\Transforms.h">
+      <Filter>Header Files\Data Structures</Filter>
     </ClInclude>
-    <ClInclude Include="Colour.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\Headers\DataStructures\Tuple.h">
+      <Filter>Header Files\Data Structures</Filter>
     </ClInclude>
-    <ClInclude Include="Canvas.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\Headers\Helpers\Utils.h">
+      <Filter>Header Files\Helpers</Filter>
     </ClInclude>
-    <ClInclude Include="Matrix.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\Headers\Models\Ray.h">
+      <Filter>Header Files\Models</Filter>
     </ClInclude>
-    <ClInclude Include="transforms.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\Headers\Models\Canvas.h">
+      <Filter>Header Files\Models</Filter>
     </ClInclude>
-    <ClInclude Include="Ray.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\Headers\Models\Colour.h">
+      <Filter>Header Files\Models</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

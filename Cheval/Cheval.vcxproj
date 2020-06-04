@@ -19,23 +19,21 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Canvas.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="Matrix.cpp" />
-    <ClCompile Include="Ray.cpp" />
-    <ClCompile Include="transforms.cpp" />
-    <ClCompile Include="Tuple.cpp" />
-    <ClCompile Include="Utils.cpp" />
+    <ClCompile Include="src\DataStructures\Matrix.cpp" />
+    <ClCompile Include="src\DataStructures\Transforms.cpp" />
+    <ClCompile Include="src\DataStructures\Tuple.cpp" />
+    <ClCompile Include="src\Models\Canvas.cpp" />
+    <ClCompile Include="src\Models\Ray.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Canvas.h" />
-    <ClInclude Include="Colour.h" />
-    <ClInclude Include="Matrix.h" />
-    <ClInclude Include="Ray.h" />
-    <ClInclude Include="stb_image_write.h" />
-    <ClInclude Include="transforms.h" />
-    <ClInclude Include="Tuple.h" />
-    <ClInclude Include="Utils.h" />
+    <ClInclude Include="Headers\resource.h" />
+    <ClInclude Include="src\Headers\DataStructures\Matrix.h" />
+    <ClInclude Include="src\Headers\DataStructures\Transforms.h" />
+    <ClInclude Include="src\Headers\DataStructures\Tuple.h" />
+    <ClInclude Include="src\Headers\Helpers\Utils.h" />
+    <ClInclude Include="src\Headers\Models\Canvas.h" />
+    <ClInclude Include="src\Headers\Models\Colour.h" />
+    <ClInclude Include="src\Headers\Models\Ray.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

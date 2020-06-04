@@ -1,5 +1,5 @@
 #pragma once
-#include "Tuple.h"
+#include "../DataStructures/Tuple.h"
 
 class Ray
 {

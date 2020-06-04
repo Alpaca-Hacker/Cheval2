@@ -1,5 +1,6 @@
-#include "Tuple.h"
-#include "Utils.h"
+
+#include "../Headers/DataStructures/Tuple.h"
+#include "../Headers/Helpers/Utils.h"
 
 Tuple::Tuple()
 	: x_( 0.0f),

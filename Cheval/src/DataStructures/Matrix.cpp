@@ -1,8 +1,9 @@
 #include <functional>
 
-#include "Matrix.h"
-#include "Tuple.h"
-#include "Utils.h"
+#include "../Headers/DataStructures/Matrix.h"
+
+#include "../Headers/DataStructures/Tuple.h"
+#include "../Headers/Helpers/Utils.h"
 
 std::function<bool(float, float)>equals_comparator = [](float a, float b)
 {

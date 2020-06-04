@@ -1,6 +1,8 @@
 ﻿#include "pch.h"
 
-#include "../Cheval/Ray.h"
+
+#include "../Cheval/src/Headers/DataStructures/Tuple.h"
+#include "../Cheval/src/Headers/Models/Ray.h"
 
 /*
  * Scenario: Creating and querying a ray

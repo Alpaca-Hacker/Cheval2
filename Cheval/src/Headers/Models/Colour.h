@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Tuple.h"
+#include "../DataStructures/Tuple.h"
 
 class Colour : public Tuple
 {

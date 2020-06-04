@@ -1,7 +1,7 @@
 ﻿#include "pch.h"
 
-#include "../Cheval/Matrix.h"
-#include "../Cheval/Tuple.h"
+#include "../Cheval/src/Headers/DataStructures/Matrix.h"
+#include "../Cheval/src/Headers/DataStructures/Tuple.h"
 
 TEST(MatrixTests, Create4x4)
 {

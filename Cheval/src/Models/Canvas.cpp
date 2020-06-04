@@ -1,11 +1,14 @@
-#include "Canvas.h"
+
+#include "../Headers/Models/Canvas.h"
+#include "../Headers/Helpers/Utils.h"
+
 #include <cstdlib>
 
 #define STB_IMAGE_WRITE_IMPLEMENTATION
 #define STBIW_WINDOWS_UTF8 
 
-#include "stb_image_write.h"
-#include "Utils.h"
+#include "../../3rdParty/stb_image_write.h"
+
 
 Canvas::Canvas(int height, int width)
 	: height_( height),

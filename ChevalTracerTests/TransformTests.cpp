@@ -1,7 +1,7 @@
 ﻿#include "pch.h"
 
-#include "../Cheval/transforms.h"
-#include "../Cheval/Utils.h"
+#include "../Cheval/src/Headers/DataStructures/Transforms.h"
+#include "../Cheval/src/Headers/Helpers/Utils.h"
 /*
  * Scenario: Multiplying by a translation matrix
    Given transform ← translation(5, -3, 2)

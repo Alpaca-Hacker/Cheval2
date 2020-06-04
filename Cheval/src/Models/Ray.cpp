@@ -1,4 +1,6 @@
-#include "Ray.h"
+
+#include "../Headers/Models/Ray.h"
+
 
 Tuple Ray::position(float time) const
 {

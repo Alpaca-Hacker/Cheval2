@@ -1,8 +1,8 @@
 ﻿#include "pch.h"
 
-#include "../Cheval/Tuple.h"
-#include "../Cheval/Utils.h"
-#include "../Cheval/Colour.h"
+#include "../Cheval//src/Headers/Helpers/Utils.h"
+#include "../Cheval//src/Headers/Models/Colour.h"
+#include "../Cheval/src/Headers/DataStructures/Tuple.h"
 
 TEST(TupleTests, NewTupleIsZero)
 {
