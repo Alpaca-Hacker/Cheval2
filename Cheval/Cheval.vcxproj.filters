@@ -22,31 +22,46 @@
     <Filter Include="Header Files\Data Structures">
       <UniqueIdentifier>{786d0b63-52a8-47e1-a44c-6de846d9b519}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\DataStructures">
-      <UniqueIdentifier>{571d3ebd-2767-4f35-9c20-d46438d6fa22}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Helpers">
       <UniqueIdentifier>{2c558b40-ce53-488c-a95b-89a7ec208e03}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Models">
       <UniqueIdentifier>{374cea51-fea6-4fff-aa20-3b43e97a0f54}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Models\Shapes">
+      <UniqueIdentifier>{8cd89baa-e8fc-4712-b706-bd3918e5582b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Data Structures">
+      <UniqueIdentifier>{571d3ebd-2767-4f35-9c20-d46438d6fa22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Models\Shapes">
+      <UniqueIdentifier>{f7cbba68-1693-41f7-899a-3bd6fcbaa242}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\DataStructures\Tuple.cpp">
-      <Filter>Source Files\DataStructures</Filter>
+      <Filter>Source Files\Data Structures</Filter>
     </ClCompile>
     <ClCompile Include="src\DataStructures\Matrix.cpp">
-      <Filter>Source Files\DataStructures</Filter>
+      <Filter>Source Files\Data Structures</Filter>
     </ClCompile>
     <ClCompile Include="src\DataStructures\Transforms.cpp">
-      <Filter>Source Files\DataStructures</Filter>
+      <Filter>Source Files\Data Structures</Filter>
     </ClCompile>
     <ClCompile Include="src\Models\Canvas.cpp">
       <Filter>Source Files\Models</Filter>
     </ClCompile>
     <ClCompile Include="src\Models\Ray.cpp">
       <Filter>Source Files\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Models\Shapes\Sphere.cpp">
+      <Filter>Source Files\Models\Shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Models\Shapes\Shape.cpp">
+      <Filter>Source Files\Models\Shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DataStructures\Intersection.cpp">
+      <Filter>Source Files\Data Structures</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -73,6 +88,18 @@
     </ClInclude>
     <ClInclude Include="src\Headers\Models\Colour.h">
       <Filter>Header Files\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Headers\Models\Shapes\Sphere.h">
+      <Filter>Header Files\Models\Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Headers\Helpers\Types.h">
+      <Filter>Header Files\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Headers\Models\Shapes\Shape.h">
+      <Filter>Header Files\Models\Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Headers\DataStructures\Intersection.h">
+      <Filter>Header Files\Data Structures</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

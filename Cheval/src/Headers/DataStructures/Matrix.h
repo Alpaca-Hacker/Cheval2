@@ -30,8 +30,6 @@ public:
 
     static auto identity() -> Matrix;
 
-                          
-
     unsigned size() const;
 
 private:

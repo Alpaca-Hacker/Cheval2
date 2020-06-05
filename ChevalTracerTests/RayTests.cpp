@@ -3,6 +3,7 @@
 
 #include "../Cheval/src/Headers/DataStructures/Tuple.h"
 #include "../Cheval/src/Headers/Models/Ray.h"
+#include "../Cheval/src/Headers/Models/Shapes/Sphere.h"
 
 /*
  * Scenario: Creating and querying a ray
@@ -23,7 +24,7 @@ TEST(RayTests, CreateRay)
 }
 
 /*
- * Scenario: Computing a point from a distance
+ * Scenario: Computing a point from a time
 Given r ← ray(point(2, 3, 4), vector(1, 0, 0))
 Then position(r, 0) = point(2, 3, 4)
 And position(r, 1) = point(3, 3, 4)
@@ -40,4 +41,121 @@ TEST(RayTests, RayPosition)
     EXPECT_EQ(r.position(1), Point(3, 3, 4));
     EXPECT_EQ(r.position(-1), Point(1, 3, 4));
     EXPECT_EQ(r.position(2.5), Point(4.5, 3, 4));
+}
+
+/*
+ * Scenario: A ray intersects a sphere at two points
+Given r ← ray(point(0, 0, -5), vector(0, 0, 1))
+And s ← sphere()
+When xs ← intersect(s, r)
+Then xs.count = 2
+And xs[0] = 4.0
+And xs[1] = 6.0
+ */
+
+TEST(RayTests, RayVsSphereTwoPoints)
+{
+	const auto r = Ray(Point(0, 0, -5), Vector(0, 0, 1));
+	const auto s = std::make_shared<Sphere>();
+
+    auto xs = std::vector<Intersection>();
+    s->intersect(r,xs);
+
+    EXPECT_EQ(xs.size(), 2);
+
+    EXPECT_FLOAT_EQ(xs[0].time(), 4.0f);
+    EXPECT_FLOAT_EQ(xs[1].time(), 6.0f);
+}
+
+/*
+ * Scenario: A ray intersects a sphere at a tangent
+Given r ← ray(point(0, 1, -5), vector(0, 0, 1))
+And s ← sphere()
+When xs ← intersect(s, r)
+Then xs.count = 2
+And xs[0] = 5.0
+And xs[1] = 5.0
+ */
+
+TEST(RayTests, RayVsSphereTangent)
+{
+	const auto r = Ray(Point(0, 1, -5), Vector(0, 0, 1));
+	const auto s = std::make_shared<Sphere>();
+
+    auto xs = std::vector<Intersection>();
+    s->intersect(r, xs);
+
+    EXPECT_EQ(xs.size(), 2);
+
+    EXPECT_FLOAT_EQ(xs[0].time(), 5.0f);
+    EXPECT_FLOAT_EQ(xs[1].time(), 5.0f);
+}
+
+/*
+ * Scenario: A ray misses a sphere
+Given r ← ray(point(0, 2, -5), vector(0, 0, 1))
+And s ← sphere()
+When xs ← intersect(s, r)
+Then xs.count = 0
+ */
+
+TEST(RayTests, RayVsSphereMiss)
+{
+	const auto r = Ray(Point(0, 2, -5), Vector(0, 0, 1));
+	const auto s = std::make_shared<Sphere>();
+
+    auto xs = std::vector<Intersection>();
+    s->intersect(r, xs);
+
+    EXPECT_EQ(xs.size(), 0);
+
+}
+
+/*
+ * Scenario: A ray originates inside a sphere
+Given r ← ray(point(0, 0, 0), vector(0, 0, 1))
+And s ← sphere()
+When xs ← intersect(s, r)
+Then xs.count = 2
+And xs[0] = -1.0
+And xs[1] = 1.0
+ */
+
+TEST(RayTests, RayVsSphereFromMiddle)
+{
+	const auto r = Ray(Point(0, 0, 0), Vector(0, 0, 1));
+	const auto s = std::make_shared<Sphere>();
+
+    auto xs = std::vector<Intersection>();
+    s->intersect(r, xs);
+
+    EXPECT_EQ(xs.size(), 2);
+
+    EXPECT_FLOAT_EQ(xs[0].time(), -1.0f);
+    EXPECT_FLOAT_EQ(xs[1].time(), 1.0f);
+
+}
+
+/*
+ * Scenario: A sphere is behind a ray
+Given r ← ray(point(0, 0, 5), vector(0, 0, 1))
+And s ← sphere()
+When xs ← intersect(s, r)
+Then xs.count = 2
+And xs[0] = -6.0
+And xs[1] = -4.0
+ */
+
+TEST(RayTests, RayVsSphereFromBehind)
+{
+	const auto r = Ray(Point(0, 0, 5), Vector(0, 0, 1));
+	const auto s = std::make_shared<Sphere>();
+
+    auto xs = std::vector<Intersection>();
+    s->intersect(r, xs);
+
+    EXPECT_EQ(xs.size(), 2);
+
+    EXPECT_FLOAT_EQ(xs[0].time(), -6.0f);
+    EXPECT_FLOAT_EQ(xs[1].time(), -4.0f);
 }

@@ -19,21 +19,28 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\DataStructures\Intersection.cpp" />
     <ClCompile Include="src\DataStructures\Matrix.cpp" />
     <ClCompile Include="src\DataStructures\Transforms.cpp" />
     <ClCompile Include="src\DataStructures\Tuple.cpp" />
     <ClCompile Include="src\Models\Canvas.cpp" />
     <ClCompile Include="src\Models\Ray.cpp" />
+    <ClCompile Include="src\Models\Shapes\Shape.cpp" />
+    <ClCompile Include="src\Models\Shapes\Sphere.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Headers\resource.h" />
+    <ClInclude Include="src\Headers\DataStructures\Intersection.h" />
     <ClInclude Include="src\Headers\DataStructures\Matrix.h" />
     <ClInclude Include="src\Headers\DataStructures\Transforms.h" />
     <ClInclude Include="src\Headers\DataStructures\Tuple.h" />
+    <ClInclude Include="src\Headers\Helpers\Types.h" />
     <ClInclude Include="src\Headers\Helpers\Utils.h" />
     <ClInclude Include="src\Headers\Models\Canvas.h" />
     <ClInclude Include="src\Headers\Models\Colour.h" />
     <ClInclude Include="src\Headers\Models\Ray.h" />
+    <ClInclude Include="src\Headers\Models\Shapes\Shape.h" />
+    <ClInclude Include="src\Headers\Models\Shapes\Sphere.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
