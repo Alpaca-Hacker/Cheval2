@@ -11,6 +11,7 @@ class Shape : public std::enable_shared_from_this<Shape>
 public:
 	Shape();
 	virtual void intersect(Ray const& ray, std::vector<Intersection>& xs) const = 0;
+	virtual Tuple normal_at(const Tuple& point) const = 0;
 
 	Matrix transform() const
 	{

@@ -2,6 +2,7 @@
 
 
 #include "../Cheval/src/Headers/DataStructures/Transforms.h"
+#include "../Cheval/src/Headers/Helpers/Utils.h"
 #include "../Cheval/src/Headers/Models/Shapes/Sphere.h"
 
 /*
@@ -76,4 +77,100 @@ TEST(SphereTests, RayIntersectWithTranslatedSphere)
     s->intersect(r, xs);
 
     EXPECT_EQ(xs.size(), 0);
+}
+
+/*
+ * Scenario: The normal on a sphere at a point on the x axis
+Given s ← sphere()
+When n ← normal_at(s, point(1, 0, 0))
+Then n = vector(1, 0, 0)
+*/
+TEST(SphereTests, NormalOnXAxis)
+{
+    auto s = std::make_shared<Sphere>();
+    auto n = s->normal_at(Point(1, 0, 0));
+
+    EXPECT_EQ(n, Vector(1, 0, 0));
+}
+/*
+Scenario: The normal on a sphere at a point on the y axis
+Given s ← sphere()
+When n ← normal_at(s, point(0, 1, 0))
+Then n = vector(0, 1, 0)
+*/
+TEST(SphereTests, NormalOnYAxis)
+{
+    auto s = std::make_shared<Sphere>();
+    auto n = s->normal_at(Point(0, 1, 0));
+
+    EXPECT_EQ(n, Vector(0, 1, 0));
+}
+/*
+Scenario: The normal on a sphere at a point on the z axis
+Given s ← sphere()
+When n ← normal_at(s, point(0, 0, 1))
+Then n = vector(0, 0, 1)
+*/
+TEST(SphereTests, NormalOnZAxis)
+{
+    auto s = std::make_shared<Sphere>();
+    auto n = s->normal_at(Point(0, 0, 1));
+
+    EXPECT_EQ(n, Vector(0, 0, 1));
+}
+/*
+Scenario: The normal on a sphere at a nonaxial point
+Given s ← sphere()
+When n ← normal_at(s, point(√3/3, √3/3, √3/3))
+Then n = vector(√3/3, √3/3, √3/3)
+And n = normalize(n)
+ */
+
+TEST(SphereTests, NormalOnNonaxial)
+{
+	const auto rt3div3 = std::sqrtf(3) / 3.0f;
+    auto s = std::make_shared<Sphere>();
+    auto n = s->normal_at(Point(rt3div3, rt3div3, rt3div3));
+
+    EXPECT_EQ(n, Vector(rt3div3, rt3div3, rt3div3));
+    EXPECT_EQ(Tuple::normalize(n), n);
+}
+
+/*
+ * Scenario: Computing the normal on a translated sphere
+Given s ← sphere()
+And set_transform(s, translation(0, 1, 0))
+When n ← normal_at(s, point(0, 1.70711, -0.70711))
+Then n = vector(0, 0.70711, -0.70711)
+*/
+TEST(SphereTests, NormalOnTranslatedSphere)
+{
+    auto s = std::make_shared<Sphere>();
+	auto t = matrix::translation(0, 1, 0);
+
+	s->setTransform(t);
+	
+    auto n = s->normal_at(Point(0, 1.70711, -0.70711));
+
+    EXPECT_EQ(n, Vector(0, 0.70711, -0.70711));
+}
+/*
+Scenario: Computing the normal on a transformed sphere
+Given s ← sphere()
+And m ← scaling(1, 0.5, 1) * rotation_z(π/5)
+And set_transform(s, m)
+When n ← normal_at(s, point(0, √2/2, -√2/2))
+Then n = vector(0, 0.97014, -0.24254)
+ */
+TEST(SphereTests, NormalOnTransformedSphere)
+{
+    auto s = std::make_shared<Sphere>();
+	
+    auto t = matrix::scaling(1, 0.5, 1)* matrix::rotation_z(PI / 5);
+
+    s->setTransform(t);
+
+    auto n = s->normal_at(Point(0, SQRT2DIV2, -SQRT2DIV2));
+
+    EXPECT_EQ(n, Vector(0, 0.97014, -0.24254));
 }
