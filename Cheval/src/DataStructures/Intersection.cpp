@@ -11,7 +11,7 @@ Intersection::Intersection(float time, ShapeConstPtr shape)
 
 Intersection Intersection::hit(std::vector<Intersection> &xs)
 {
-    std::sort(xs.begin(), xs.end());
+   // std::sort(xs.begin(), xs.end());
 	
     for (auto const& i : xs)
     {

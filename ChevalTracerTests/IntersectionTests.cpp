@@ -30,7 +30,17 @@ And xs[0].t = 1
 And xs[1].t = 2
  */
 
-// Testing std::vector is not required.
+TEST(IntersectionTests, IntersectionsWork)
+{
+    const auto s = std::make_shared<Sphere>();
+    const auto i1 = Intersection(1, s);
+    const auto i2 = Intersection(2, s);
+    auto xs = Intersections(i1, i2);
+
+    EXPECT_EQ(xs.size(), 2);
+    EXPECT_EQ(xs[0].time(), 1);
+    EXPECT_EQ(xs[1].time(), 2);
+}
 
 /*
  * Scenario: Intersect sets the object on the intersection
@@ -47,7 +57,7 @@ TEST(IntersectionTests, IntersectionHasObjectPointers)
     const auto r = Ray(Point(0, 0, 5), Vector(0, 0, 1));
     const auto s = std::make_shared<Sphere>();
 
-    auto xs = std::vector<Intersection>();
+    auto xs = Intersections();
     s->intersect(r, xs);
 
     EXPECT_EQ(xs.size(), 2);
@@ -70,7 +80,7 @@ TEST(IntersectionTests, HitTestAllPositive)
     const auto s = std::make_shared<Sphere>();
     const auto i1 = Intersection(1, s);
     const auto i2 = Intersection(2, s);
-	auto xs = std::vector<Intersection>{i1,i2};
+	auto xs = Intersections(i1,i2);
 
     EXPECT_EQ(Intersection::hit(xs), i1);
 }
@@ -89,7 +99,7 @@ TEST(IntersectionTests, HitTestSomeNegative)
     const auto s = std::make_shared<Sphere>();
     const auto i1 = Intersection(-1, s);
     const auto i2 = Intersection(1, s);
-    auto xs = std::vector<Intersection>{ i1,i2 };
+    auto xs = Intersections(i1,i2);
 
     EXPECT_EQ(Intersection::hit(xs), i2);
 }
@@ -108,7 +118,7 @@ TEST(IntersectionTests, HitTestAllNegative)
     const auto s = std::make_shared<Sphere>();
     const auto i1 = Intersection(-2, s);
     const auto i2 = Intersection(-1, s);
-    auto xs = std::vector<Intersection>{ i1,i2 };
+    auto xs = Intersections(i1,i2 );
 
     EXPECT_EQ(Intersection::hit(xs).object(), nullptr);
 }
@@ -130,7 +140,7 @@ TEST(IntersectionTests, HitTestLotsOfXs)
     const auto i2 = Intersection(7, s);
     const auto i3 = Intersection(-3, s);
     const auto i4 = Intersection(2, s);
-    auto xs = std::vector<Intersection>{ i1,i2, i3, i4 };
+    auto xs = Intersections(i1,i2, i3, i4 );
 
     EXPECT_EQ(Intersection::hit(xs), i4);
 }

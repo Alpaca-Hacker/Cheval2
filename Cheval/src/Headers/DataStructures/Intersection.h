@@ -1,4 +1,5 @@
 #pragma once
+#include <algorithm>
 #include <vector>
 
 #include "../../Headers/Helpers/Types.h"
@@ -26,3 +27,10 @@ inline bool Intersection::operator<(Intersection const& other) const
     return time_ < other.time_;
 }
 
+template<typename ...Args>
+std::vector<Intersection> Intersections(Args const&... args)
+{
+    std::vector<Intersection> xs{ args... };
+    std::sort(xs.begin(), xs.end());
+    return xs;
+}

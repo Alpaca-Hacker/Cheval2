@@ -4,8 +4,9 @@
 #include "../../Headers/Helpers/Utils.h"
 
 
-void Sphere::intersect(Ray const& ray, std::vector<Intersection>& xs) const
+void Sphere::intersect(Ray const& rayO, std::vector<Intersection>& xs) const
 {
+	const auto ray = Ray::transform(rayO, transform_inverse());
 
 	const auto s2r = ray.origin() - Point(0, 0, 0);
 

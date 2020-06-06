@@ -41,6 +41,7 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MatrixTests.cpp" />
     <ClCompile Include="RayTests.cpp" />
+    <ClCompile Include="SphereTests.cpp" />
     <ClCompile Include="TransformTests.cpp" />
     <ClCompile Include="TupleTest.cpp" />
     <ClCompile Include="pch.cpp">

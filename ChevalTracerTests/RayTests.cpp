@@ -1,6 +1,8 @@
 ﻿#include "pch.h"
 
 
+
+#include "../Cheval/src/Headers/DataStructures/Transforms.h"
 #include "../Cheval/src/Headers/DataStructures/Tuple.h"
 #include "../Cheval/src/Headers/Models/Ray.h"
 #include "../Cheval/src/Headers/Models/Shapes/Sphere.h"
@@ -151,11 +153,48 @@ TEST(RayTests, RayVsSphereFromBehind)
 	const auto r = Ray(Point(0, 0, 5), Vector(0, 0, 1));
 	const auto s = std::make_shared<Sphere>();
 
-    auto xs = std::vector<Intersection>();
+    auto xs = Intersections();
     s->intersect(r, xs);
 
     EXPECT_EQ(xs.size(), 2);
 
     EXPECT_FLOAT_EQ(xs[0].time(), -6.0f);
     EXPECT_FLOAT_EQ(xs[1].time(), -4.0f);
+}
+/*
+ * Scenario: Translating a ray
+Given r ← ray(point(1, 2, 3), vector(0, 1, 0))
+And m ← translation(3, 4, 5)
+When r2 ← transform(r, m)
+Then r2.origin = point(4, 6, 8)
+And r2.direction = vector(0, 1, 0)
+*/
+TEST(RayTests, RayTranslating)
+{
+    const auto r = Ray(Point(1, 2, 3), Vector(0, 1, 0));
+    const auto m = matrix::translation(3, 4, 5);
+
+    const auto r2 = Ray::transform(r, m);
+
+    EXPECT_EQ(r2.origin(), Point(4, 6, 8));
+    EXPECT_EQ(r2.direction(), Vector(0, 1, 0));
+}
+/*
+Scenario: Scaling a ray
+Given r ← ray(point(1, 2, 3), vector(0, 1, 0))
+And m ← scaling(2, 3, 4)
+When r2 ← transform(r, m)
+Then r2.origin = point(2, 6, 12)
+And r2.direction = vector(0, 3, 0)
+ */
+
+TEST(RayTests, RayScale)
+{
+    const auto r = Ray(Point(1, 2, 3), Vector(0, 1, 0));
+    const auto m = matrix::scaling(2,3, 4);
+
+    const auto r2 = Ray::transform(r, m);
+
+    EXPECT_EQ(r2.origin(), Point(2, 6, 12));
+    EXPECT_EQ(r2.direction(), Vector(0, 3, 0));
 }

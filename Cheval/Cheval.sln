@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Cheval", "Cheval.vcxproj", "{ED276D85-7E76-4284-AFA3-DA907CB812E2}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ChevalLib", "Cheval.vcxproj", "{ED276D85-7E76-4284-AFA3-DA907CB812E2}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ChevalTracerTests", "..\ChevalTracerTests\ChevalTracerTests.vcxproj", "{A604598C-19BE-4037-A4CA-A0E5A31CE465}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ChevalTracer", "..\ChevalTracer\ChevalTracer.vcxproj", "{BB7A4DCE-1C63-47B5-999F-ED946D863AE2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +33,14 @@ Global
 		{A604598C-19BE-4037-A4CA-A0E5A31CE465}.Release|x64.Build.0 = Release|x64
 		{A604598C-19BE-4037-A4CA-A0E5A31CE465}.Release|x86.ActiveCfg = Release|Win32
 		{A604598C-19BE-4037-A4CA-A0E5A31CE465}.Release|x86.Build.0 = Release|Win32
+		{BB7A4DCE-1C63-47B5-999F-ED946D863AE2}.Debug|x64.ActiveCfg = Debug|x64
+		{BB7A4DCE-1C63-47B5-999F-ED946D863AE2}.Debug|x64.Build.0 = Debug|x64
+		{BB7A4DCE-1C63-47B5-999F-ED946D863AE2}.Debug|x86.ActiveCfg = Debug|Win32
+		{BB7A4DCE-1C63-47B5-999F-ED946D863AE2}.Debug|x86.Build.0 = Debug|Win32
+		{BB7A4DCE-1C63-47B5-999F-ED946D863AE2}.Release|x64.ActiveCfg = Release|x64
+		{BB7A4DCE-1C63-47B5-999F-ED946D863AE2}.Release|x64.Build.0 = Release|x64
+		{BB7A4DCE-1C63-47B5-999F-ED946D863AE2}.Release|x86.ActiveCfg = Release|Win32
+		{BB7A4DCE-1C63-47B5-999F-ED946D863AE2}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

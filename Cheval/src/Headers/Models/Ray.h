@@ -1,5 +1,6 @@
 #pragma once
 #include "../DataStructures/Tuple.h"
+#include "../DataStructures/Matrix.h"
 
 class Ray
 {
@@ -22,8 +23,13 @@ public:
 		return direction_;
 	}
 
+	static Ray transform(const Ray& ray, const Matrix& transform);
+	
+
 private:
 	Tuple origin_;
 	Tuple direction_;
 };
+
+Ray operator*(Ray const& ray, const Matrix& rhs);
 
