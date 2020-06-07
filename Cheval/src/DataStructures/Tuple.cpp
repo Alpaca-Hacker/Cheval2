@@ -91,6 +91,11 @@ bool Tuple::operator!=(Tuple& other)
 	return !this->operator==(other);
 }
 
+Tuple Tuple::reflect(const Tuple& in, const Tuple& normal)
+{
+	return { in - normal * 2 * dot(in, normal) };
+}
+
 float Tuple::magnitude() const
 {
 	return std::sqrtf(x_ * x_ + y_ * y_ + z_ * z_);

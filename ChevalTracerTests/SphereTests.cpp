@@ -174,3 +174,29 @@ TEST(SphereTests, NormalOnTransformedSphere)
 
     EXPECT_EQ(n, Vector(0, 0.97014, -0.24254));
 }
+
+/*
+ * Scenario: A sphere has a default material
+Given s ← sphere()
+When m ← s.material
+Then m = material()
+Scenario: A sphere may be assigned a material
+Given s ← sphere()
+And m ← material()
+And m.ambient ← 1
+When s.material ← m
+Then s.material = m
+ */
+
+TEST(SphereTests, MatTestsOnSphere)
+{
+    auto s = std::make_shared<Sphere>();
+    EXPECT_EQ(s->material(), Material());
+
+    auto m = Material();
+    m.ambient() = 1;
+    s->material() = m;
+
+    EXPECT_EQ(s->material(), m);
+    EXPECT_EQ(s->material().ambient(), 1.0f);
+}

@@ -38,7 +38,9 @@
   <ItemGroup>
     <ClCompile Include="CanvasTests.cpp" />
     <ClCompile Include="IntersectionTests.cpp" />
+    <ClCompile Include="LightTests.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="MaterialTests.cpp" />
     <ClCompile Include="MatrixTests.cpp" />
     <ClCompile Include="RayTests.cpp" />
     <ClCompile Include="SphereTests.cpp" />

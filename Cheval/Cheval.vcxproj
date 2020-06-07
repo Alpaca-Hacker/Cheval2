@@ -24,6 +24,8 @@
     <ClCompile Include="src\DataStructures\Transforms.cpp" />
     <ClCompile Include="src\DataStructures\Tuple.cpp" />
     <ClCompile Include="src\Models\Canvas.cpp" />
+    <ClCompile Include="src\Models\Lights\Light.cpp" />
+    <ClCompile Include="src\Models\Material.cpp" />
     <ClCompile Include="src\Models\Ray.cpp" />
     <ClCompile Include="src\Models\Shapes\Shape.cpp" />
     <ClCompile Include="src\Models\Shapes\Sphere.cpp" />
@@ -38,6 +40,8 @@
     <ClInclude Include="src\Headers\Helpers\Utils.h" />
     <ClInclude Include="src\Headers\Models\Canvas.h" />
     <ClInclude Include="src\Headers\Models\Colour.h" />
+    <ClInclude Include="src\Headers\Models\Lights\Light.h" />
+    <ClInclude Include="src\Headers\Models\Material.h" />
     <ClInclude Include="src\Headers\Models\Ray.h" />
     <ClInclude Include="src\Headers\Models\Shapes\Shape.h" />
     <ClInclude Include="src\Headers\Models\Shapes\Sphere.h" />
