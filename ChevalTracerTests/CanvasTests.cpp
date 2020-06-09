@@ -8,9 +8,9 @@ TEST(CanvasTest, CanvasWritesCorrectly)
 	const auto image_width = 256;
 	auto c = Canvas(image_height, image_width);
 
-	for (int j = image_height - 1; j >= 0; --j)
+	for (int j = image_height/4 - 1; j >= 0; --j)
 	{
-		for (int i = 0; i < image_width; ++i)
+		for (int i = 0; i < image_width/4; ++i)
 		{
 			auto r = static_cast<float>(i) / (image_width - 1.0f);
 			auto g = static_cast<float>(j) / (image_height - 1.0f);

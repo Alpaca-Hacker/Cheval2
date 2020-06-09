@@ -34,7 +34,7 @@ int Canvas::write_file(char const* filename) const
 	auto *Data = new uint8_t[size];
 
 	auto index = 0;
-	for (auto i = height_ * width_ - 1; i >= 0; --i)
+	for (auto i = 0; i < height_ * width_; ++i)
 	{
 		auto c = screen_[i];
 
@@ -57,7 +57,7 @@ void Canvas::write_pixel(int x, int y, Colour const& colour) const
 {
 	if (x >= width_ || y >= height_) return; 
 
-	screen_[x + width_ * y] = colour;
+	screen_[x + (width_ * y)] = colour;
 }
 
 Colour Canvas::pixel_at(int x, int y) const

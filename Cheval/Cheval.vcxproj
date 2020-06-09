@@ -23,6 +23,7 @@
     <ClCompile Include="src\DataStructures\Matrix.cpp" />
     <ClCompile Include="src\DataStructures\Transforms.cpp" />
     <ClCompile Include="src\DataStructures\Tuple.cpp" />
+    <ClCompile Include="src\Integrators\Integrator.cpp" />
     <ClCompile Include="src\Models\Canvas.cpp" />
     <ClCompile Include="src\Models\Lights\Light.cpp" />
     <ClCompile Include="src\Models\Material.cpp" />
@@ -38,6 +39,7 @@
     <ClInclude Include="src\Headers\DataStructures\Tuple.h" />
     <ClInclude Include="src\Headers\Helpers\Types.h" />
     <ClInclude Include="src\Headers\Helpers\Utils.h" />
+    <ClInclude Include="src\Headers\Integrators\Integrator.h" />
     <ClInclude Include="src\Headers\Models\Canvas.h" />
     <ClInclude Include="src\Headers\Models\Colour.h" />
     <ClInclude Include="src\Headers\Models\Lights\Light.h" />

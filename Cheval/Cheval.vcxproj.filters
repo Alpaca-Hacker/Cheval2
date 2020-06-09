@@ -43,6 +43,12 @@
     <Filter Include="Header Files\Models\Lights">
       <UniqueIdentifier>{47d3355b-2ceb-4708-8bba-2fec53dabe1e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Integrators">
+      <UniqueIdentifier>{f147ed26-fe3d-4218-8185-093110674f3c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Integrators">
+      <UniqueIdentifier>{3937c1fb-d435-4290-8aed-40a415941dd3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\DataStructures\Tuple.cpp">
@@ -74,6 +80,9 @@
     </ClCompile>
     <ClCompile Include="src\Models\Material.cpp">
       <Filter>Source Files\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Integrators\Integrator.cpp">
+      <Filter>Source Files\Integrators</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -118,6 +127,9 @@
     </ClInclude>
     <ClInclude Include="src\Headers\Models\Material.h">
       <Filter>Header Files\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Headers\Integrators\Integrator.h">
+      <Filter>Header Files\Integrators</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
