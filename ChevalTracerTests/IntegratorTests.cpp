@@ -24,9 +24,9 @@ auto position = Point(0, 0, 0);
 //
 TEST(IntegratorTests, BetweenLightAndSurface)
 {
-    auto eyev = Vector(0, 0, -1);
-    auto normalv = Vector(0, 0, -1);
-    auto light = point_light(Point(0, 0, -10), Colour(1, 1, 1));
+	const auto eyev = Vector(0, 0, -1);
+	const auto normalv = Vector(0, 0, -1);
+	const auto light = Point_Light(Point(0, 0, -10), Colour(1, 1, 1));
 
     auto result = Integrator::lighting(m, light, position, eyev, normalv);
 
@@ -42,9 +42,9 @@ TEST(IntegratorTests, BetweenLightAndSurface)
 
 TEST(IntegratorTests, BetweenLightAndSurfaceoffset45)
 {
-    auto eyev = Vector(0, SQRT2DIV2, -SQRT2DIV2);
-    auto normalv = Vector(0, 0, -1);
-    auto light = point_light(Point(0, 0, -10), Colour(1, 1, 1));
+	const auto eyev = Vector(0, SQRT2DIV2, -SQRT2DIV2);
+	const auto normalv = Vector(0, 0, -1);
+	const auto light = Point_Light(Point(0, 0, -10), Colour(1, 1, 1));
 
     auto result = Integrator::lighting(m, light, position, eyev, normalv);
 
@@ -60,9 +60,9 @@ TEST(IntegratorTests, BetweenLightAndSurfaceoffset45)
 
 TEST(IntegratorTests, OppositeSurfaceLightOffset45)
 {
-    auto eyev = Vector(0, 0, -1);
-    auto normalv = Vector(0, 0, -1);
-    auto light = point_light(Point(0, 10, -10), Colour(1, 1, 1));
+	const auto eyev = Vector(0, 0, -1);
+	const auto normalv = Vector(0, 0, -1);
+	const auto light = Point_Light(Point(0, 10, -10), Colour(1, 1, 1));
 
     auto result = Integrator::lighting(m, light, position, eyev, normalv);
 
@@ -80,9 +80,9 @@ Then result = color(1.6364, 1.6364, 1.6364)
 
 TEST(IntegratorTests, InPathOf45Reflection)
 {
-    auto eyev = Vector(0, -SQRT2DIV2, -SQRT2DIV2);
-    auto normalv = Vector(0, 0, -1);
-    auto light = point_light(Point(0, 10, -10), Colour(1, 1, 1));
+	const auto eyev = Vector(0, -SQRT2DIV2, -SQRT2DIV2);
+	const auto normalv = Vector(0, 0, -1);
+	const auto light = Point_Light(Point(0, 10, -10), Colour(1, 1, 1));
 
     auto result = Integrator::lighting(m, light, position, eyev, normalv);
 
@@ -100,9 +100,9 @@ Then result = color(0.1, 0.1, 0.1)
 
 TEST(IntegratorTests, LightBehindSurface)
 {
-    auto eyev = Vector(0, 0, -1);
-    auto normalv = Vector(0, 0, -1);
-    auto light = point_light(Point(0, 0, 10), Colour(1, 1, 1));
+	const auto eyev = Vector(0, 0, -1);
+	const auto normalv = Vector(0, 0, -1);
+	const auto light = Point_Light(Point(0, 0, 10), Colour(1, 1, 1));
 
     auto result = Integrator::lighting(m, light, position, eyev, normalv);
 

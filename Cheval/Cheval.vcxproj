@@ -24,12 +24,14 @@
     <ClCompile Include="src\DataStructures\Transforms.cpp" />
     <ClCompile Include="src\DataStructures\Tuple.cpp" />
     <ClCompile Include="src\Integrators\Integrator.cpp" />
+    <ClCompile Include="src\Models\Camera.cpp" />
     <ClCompile Include="src\Models\Canvas.cpp" />
     <ClCompile Include="src\Models\Lights\Light.cpp" />
     <ClCompile Include="src\Models\Material.cpp" />
     <ClCompile Include="src\Models\Ray.cpp" />
     <ClCompile Include="src\Models\Shapes\Shape.cpp" />
     <ClCompile Include="src\Models\Shapes\Sphere.cpp" />
+    <ClCompile Include="src\World.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Headers\resource.h" />
@@ -40,6 +42,7 @@
     <ClInclude Include="src\Headers\Helpers\Types.h" />
     <ClInclude Include="src\Headers\Helpers\Utils.h" />
     <ClInclude Include="src\Headers\Integrators\Integrator.h" />
+    <ClInclude Include="src\Headers\Models\Camera.h" />
     <ClInclude Include="src\Headers\Models\Canvas.h" />
     <ClInclude Include="src\Headers\Models\Colour.h" />
     <ClInclude Include="src\Headers\Models\Lights\Light.h" />
@@ -47,6 +50,7 @@
     <ClInclude Include="src\Headers\Models\Ray.h" />
     <ClInclude Include="src\Headers\Models\Shapes\Shape.h" />
     <ClInclude Include="src\Headers\Models\Shapes\Sphere.h" />
+    <ClInclude Include="src\Headers\World.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

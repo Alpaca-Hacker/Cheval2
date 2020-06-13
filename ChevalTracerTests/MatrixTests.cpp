@@ -69,9 +69,9 @@ TEST(MatrixTests, MatrixEquals)
       5.0f,  6.0f,  7.0f, 8.0f,
       9.0f, 8.0f, 7.0f, 6.0f,
       5.0f, 4.0f, 3.0f, 2.0f };
-	
-    auto a = Matrix(4, data);
-    auto b = Matrix(4, data);
+
+	const auto a = Matrix(4, data);
+	const auto b = Matrix(4, data);
 
     EXPECT_TRUE(a == b);
 }
@@ -84,7 +84,7 @@ TEST(MatrixTests, MatrixNotEquals)
       9.0f, 8.0f, 7.0f, 6.0f,
       5.0f, 4.0f, 3.0f, 2.0f };
 
-    auto a = Matrix(4, data);
+    const auto a = Matrix(4, data);
     auto b = Matrix(4, data);
 
     b(3, 0) = 0.0f;
@@ -280,9 +280,9 @@ TEST(MatrixTests, SubOf3x3)
 -3, 2, 7, 
  0, 6,-3 
  };
-    auto a = Matrix(3, data);
+    const auto a = Matrix(3, data);
 
-    auto expected = Matrix(2, std::vector<float>{-3, 2, 0, 6});
+    const auto expected = Matrix(2, std::vector<float>{-3, 2, 0, 6});
     auto result = a.submatrix(0, 2);
 
     EXPECT_EQ(result, expected);
@@ -309,7 +309,7 @@ TEST(MatrixTests, SubOf4x4)
 - 1, 0, 8, 2,
 - 7, 1,-1, 1
     };
-    auto a = Matrix(4, data);
+    const auto a = Matrix(4, data);
 
     const auto expected = Matrix(3, std::vector<float>{
 			-6, 1, 6,
@@ -617,7 +617,7 @@ TEST(MatrixTests, InverseMatrixTimesProduct)
       -4, 4 , 4 , 1,
       -6, 5 ,-1 , 1 };
 
-    auto a = Matrix(4, data);
+    const auto a = Matrix(4, data);
     const auto dataB = std::vector<float>{
   8, 2,2,2,
   3,-1,7,0,

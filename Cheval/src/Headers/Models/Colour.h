@@ -7,6 +7,7 @@ class Colour : public Tuple
 public:
     Colour(Tuple const& t) : Tuple(t.X(), t.Y(), t.Z(), 0.0f) {}
     Colour(float r, float g, float b) : Tuple(r, g, b, 0.0f) {}
+    Colour() :Tuple(0, 0, 0, 0){}
 
     float R() const { return this->X(); }
     float G() const { return this->Y(); }

@@ -2,7 +2,7 @@
 #include "../Headers/DataStructures/Transforms.h"
 
 
-Matrix matrix::translation(float x, float y, float z)
+Matrix transforms::translation(float x, float y, float z)
 {
     auto transform = Matrix::identity();
     transform(0, 3) = x;
@@ -11,7 +11,7 @@ Matrix matrix::translation(float x, float y, float z)
     return transform;
 }
 
-Matrix matrix::scaling(float x, float y, float z)
+Matrix transforms::scaling(float x, float y, float z)
 {
     auto transform = Matrix::identity();
     transform(0, 0) = x;
@@ -20,7 +20,7 @@ Matrix matrix::scaling(float x, float y, float z)
     return transform;
 }
 
-Matrix matrix::rotation_x(float radians)
+Matrix transforms::rotation_x(float radians)
 {
     float const c = std::cos(radians);
     float const s = std::sin(radians);
@@ -33,7 +33,7 @@ Matrix matrix::rotation_x(float radians)
 	
 }
 
-Matrix matrix::rotation_y(float radians)
+Matrix transforms::rotation_y(float radians)
 {
     float const c = std::cos(radians);
     float const s = std::sin(radians);
@@ -45,7 +45,7 @@ Matrix matrix::rotation_y(float radians)
     return transform;
 }
 
-Matrix matrix::rotation_z(float radians)
+Matrix transforms::rotation_z(float radians)
 {
     float const c = std::cos(radians);
     float const s = std::sin(radians);
@@ -57,7 +57,7 @@ Matrix matrix::rotation_z(float radians)
     return transform;
 }
 
-Matrix matrix::shearing(float xy, float xz, float yx, float yz, float zx, float zy)
+Matrix transforms::shearing(float xy, float xz, float yx, float yz, float zx, float zy)
 {
     auto transform = Matrix::identity();
     transform(0, 1) = xy;
@@ -67,6 +67,21 @@ Matrix matrix::shearing(float xy, float xz, float yx, float yz, float zx, float 
     transform(2, 0) = zx;
     transform(2, 1) = zy;
     return transform;
+}
+
+Matrix transforms::View(Tuple const& from, Tuple const& to, Tuple const& up)
+{
+    auto forward = Tuple::normalize(to - from);
+    const auto upn = Tuple::normalize(up);
+    auto left = Tuple::cross(forward, upn);
+    auto true_up = Tuple::cross(left, forward);
+    const auto orientation = Matrix(4, std::vector<float>{
+        left.X(),    left.Y(),    left.Z(), 0,
+     true_up.X(), true_up.Y(), true_up.Z(), 0,
+    -forward.X(),-forward.Y(),-forward.Z(), 0,
+               0,           0,           0, 1});
+	
+    return orientation * translation(-from.X(), -from.Y(), -from.Z());
 }
 
 

@@ -84,6 +84,12 @@
     <ClCompile Include="src\Integrators\Integrator.cpp">
       <Filter>Source Files\Integrators</Filter>
     </ClCompile>
+    <ClCompile Include="src\World.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Models\Camera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Headers\resource.h">
@@ -130,6 +136,12 @@
     </ClInclude>
     <ClInclude Include="src\Headers\Integrators\Integrator.h">
       <Filter>Header Files\Integrators</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Headers\World.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Headers\Models\Camera.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

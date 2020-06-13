@@ -33,4 +33,9 @@ private:
 	Material material_ = Material();
 };
 
+template<typename T>
+ShapePtr GetShape()
+{
+	return  std::make_shared<T>();
+}
 

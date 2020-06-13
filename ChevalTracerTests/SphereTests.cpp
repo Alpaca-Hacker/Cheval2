@@ -27,7 +27,7 @@ Then s.transform = t
 TEST(SphereTests, SetTransform)
 {
     auto s = std::make_shared<Sphere>();
-   auto t = matrix::translation(2, 3, 4);
+   auto t = transforms::translation(2, 3, 4);
    s->setTransform(t);
 
     EXPECT_EQ(s->transform(), t);
@@ -45,9 +45,9 @@ And xs[1].t = 7
 */
 TEST(SphereTests, RayIntersectWithScaledSphere)
 {
-    auto r = Ray(Point(0, 0, -5), Vector(0, 0, 1));
+	const auto r = Ray(Point(0, 0, -5), Vector(0, 0, 1));
     auto s = std::make_shared<Sphere>();
-    auto t = matrix::scaling(2, 2, 2);
+    auto t = transforms::scaling(2, 2, 2);
     s->setTransform(t);
 
 	auto xs = Intersections();
@@ -68,9 +68,9 @@ Then xs.count = 0
 
 TEST(SphereTests, RayIntersectWithTranslatedSphere)
 {
-    auto r = Ray(Point(0, 0, -5), Vector(0, 0, 1));
+	const auto r = Ray(Point(0, 0, -5), Vector(0, 0, 1));
     auto s = std::make_shared<Sphere>();
-	auto t = matrix::translation(5, 0, 0);
+	auto t = transforms::translation(5, 0, 0);
     s->setTransform(t);
 
     auto xs = Intersections();
@@ -87,7 +87,7 @@ Then n = vector(1, 0, 0)
 */
 TEST(SphereTests, NormalOnXAxis)
 {
-    auto s = std::make_shared<Sphere>();
+	const auto s = std::make_shared<Sphere>();
     auto n = s->normal_at(Point(1, 0, 0));
 
     EXPECT_EQ(n, Vector(1, 0, 0));
@@ -100,7 +100,7 @@ Then n = vector(0, 1, 0)
 */
 TEST(SphereTests, NormalOnYAxis)
 {
-    auto s = std::make_shared<Sphere>();
+	const auto s = std::make_shared<Sphere>();
     auto n = s->normal_at(Point(0, 1, 0));
 
     EXPECT_EQ(n, Vector(0, 1, 0));
@@ -113,7 +113,7 @@ Then n = vector(0, 0, 1)
 */
 TEST(SphereTests, NormalOnZAxis)
 {
-    auto s = std::make_shared<Sphere>();
+	const auto s = std::make_shared<Sphere>();
     auto n = s->normal_at(Point(0, 0, 1));
 
     EXPECT_EQ(n, Vector(0, 0, 1));
@@ -129,7 +129,7 @@ And n = normalize(n)
 TEST(SphereTests, NormalOnNonaxial)
 {
 	const auto rt3div3 = std::sqrtf(3) / 3.0f;
-    auto s = std::make_shared<Sphere>();
+	const auto s = std::make_shared<Sphere>();
     auto n = s->normal_at(Point(rt3div3, rt3div3, rt3div3));
 
     EXPECT_EQ(n, Vector(rt3div3, rt3div3, rt3div3));
@@ -146,7 +146,7 @@ Then n = vector(0, 0.70711, -0.70711)
 TEST(SphereTests, NormalOnTranslatedSphere)
 {
     auto s = std::make_shared<Sphere>();
-	auto t = matrix::translation(0, 1, 0);
+	auto t = transforms::translation(0, 1, 0);
 
 	s->setTransform(t);
 	
@@ -166,7 +166,7 @@ TEST(SphereTests, NormalOnTransformedSphere)
 {
     auto s = std::make_shared<Sphere>();
 	
-    auto t = matrix::scaling(1, 0.5, 1)* matrix::rotation_z(PI / 5);
+    auto t = transforms::scaling(1, 0.5, 1)* transforms::rotation_z(PI / 5);
 
     s->setTransform(t);
 
@@ -190,7 +190,7 @@ Then s.material = m
 
 TEST(SphereTests, MatTestsOnSphere)
 {
-    auto s = std::make_shared<Sphere>();
+    auto s = GetShape<Sphere>();
     EXPECT_EQ(s->material(), Material());
 
     auto m = Material();

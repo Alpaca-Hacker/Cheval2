@@ -26,7 +26,7 @@ private:
 
 };
 
-inline Light point_light(Tuple position, Colour intensity)
+inline Light Point_Light(Tuple position, Colour intensity)
 {
 	return {position, intensity};
 }

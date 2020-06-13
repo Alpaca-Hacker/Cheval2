@@ -2,7 +2,10 @@
 #include <algorithm>
 #include <vector>
 
+
+#include "Tuple.h"
 #include "../../Headers/Helpers/Types.h"
+#include "../Models/Ray.h"
 
 class Intersection
 {
@@ -11,7 +14,12 @@ public:
 
     float time() const { return time_; }
     ShapeConstPtr object() const { return shape_; }
+    Tuple point() const { return point_; }
+    Tuple eyeV() const{ return eyev_; }
+    Tuple normalV() const{ return normalv_; }
+    bool inside() const { return inside_; }
 
+	void prepare_computations(const Ray& ray);
     static Intersection hit(std::vector<Intersection> &xs);
 
     bool operator==(Intersection const& other) const;
@@ -20,6 +28,10 @@ public:
 private:
     float time_;
     ShapeConstPtr shape_;
+    Tuple point_;
+    Tuple eyev_;
+    Tuple normalv_;
+    bool inside_;
 };
 
 inline bool Intersection::operator<(Intersection const& other) const

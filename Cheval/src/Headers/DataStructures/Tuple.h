@@ -23,6 +23,7 @@ public:
     bool operator!=(const Tuple& other);
     bool operator==(Tuple& other);
     bool operator!=(Tuple& other);
+	
 	static Tuple reflect(const Tuple& in, const Tuple& normal);
 
 	static Tuple normalize(const Tuple& v);

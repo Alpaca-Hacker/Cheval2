@@ -144,3 +144,76 @@ TEST(IntersectionTests, HitTestLotsOfXs)
 
     EXPECT_EQ(Intersection::hit(xs), i4);
 }
+
+/*
+ * Scenario: Precomputing the state of an intersection
+Given r ← ray(point(0, 0, -5), vector(0, 0, 1))
+And shape ← sphere()
+And i ← intersection(4, shape)
+When comps ← prepare_computations(i, r)
+Then comps.t = i.t
+And comps.object = i.object
+And comps.point = point(0, 0, -1)
+And comps.eyev = vector(0, 0, -1)
+And comps.normalv = vector(0, 0, -1)
+ */
+TEST(IntersectionTests, IntersectionsNowComputeState)
+{
+	const auto r = Ray(Point(0, 0, -5), Vector(0, 0, 1));
+	const auto shape = GetShape<Sphere>();
+    auto i = Intersection(4, shape);
+    i.prepare_computations(r);
+    EXPECT_EQ(i.time(), 4);
+    EXPECT_EQ(i.object(), shape);
+    EXPECT_EQ(i.point(), Point(0, 0, -1));
+    EXPECT_EQ(i.eyeV(), Vector(0, 0, -1));
+    EXPECT_EQ(i.normalV(), Vector(0, 0, -1));
+}
+
+/*
+ * Scenario: The hit, when an intersection occurs on the outside
+Given r ← ray(point(0, 0, -5), vector(0, 0, 1))
+And shape ← sphere()
+And i ← intersection(4, shape)
+When comps ← prepare_computations(i, r)
+Then comps.inside = false
+*/
+TEST(IntersectionTests, IntersectionsInsideTest)
+{
+	const auto r = Ray(Point(0, 0, -5), Vector(0, 0, 1));
+	const auto shape = GetShape<Sphere>();
+    auto i = Intersection(4, shape);
+    i.prepare_computations(r);
+
+    EXPECT_FALSE(i.inside());
+}
+
+/*
+Scenario: The hit, when an intersection occurs on the inside
+Given r ← ray(point(0, 0, 0), vector(0, 0, 1))
+And shape ← sphere()
+And i ← intersection(1, shape)
+When comps ← prepare_computations(i, r)
+Then comps.point = point(0, 0, 1)
+And comps.eyev = vector(0, 0, -1)
+And comps.inside = true
+# normal would have been (0, 0, 1), but is inverted!
+And comps.normalv = vector(0, 0, -1)
+ */
+
+TEST(IntersectionTests, IntersectionsInsideTestRayInside)
+{
+	const auto r = Ray(Point(0, 0, 0), Vector(0, 0, 1));
+	const auto shape = GetShape<Sphere>();
+    auto i = Intersection(1, shape);
+    i.prepare_computations(r);
+
+    EXPECT_TRUE(i.inside());
+    EXPECT_EQ(i.point(), Point(0, 0, 1));
+    EXPECT_EQ(i.eyeV(), Vector(0, 0, -1));
+	// Normal inverted
+    EXPECT_EQ(i.normalV(), Vector(0, 0, -1));
+}
+
+
+

@@ -172,7 +172,7 @@ And r2.direction = vector(0, 1, 0)
 TEST(RayTests, RayTranslating)
 {
     const auto r = Ray(Point(1, 2, 3), Vector(0, 1, 0));
-    const auto m = matrix::translation(3, 4, 5);
+    const auto m = transforms::translation(3, 4, 5);
 
     const auto r2 = Ray::transform(r, m);
 
@@ -191,7 +191,7 @@ And r2.direction = vector(0, 3, 0)
 TEST(RayTests, RayScale)
 {
     const auto r = Ray(Point(1, 2, 3), Vector(0, 1, 0));
-    const auto m = matrix::scaling(2,3, 4);
+    const auto m = transforms::scaling(2,3, 4);
 
     const auto r2 = Ray::transform(r, m);
 

@@ -97,8 +97,8 @@ Then a1 + a2 = tuple(1, 1, 6, 1)
 
 TEST(TupleTests, TuplesAdd)
 {
-	auto a1 = Tuple(3.0f, -2.0f, 5.0f, 1.0f);
-	auto a2 = Tuple(-2.0f, 3.0f, 1.0f, 0.0f);
+	const auto a1 = Tuple(3.0f, -2.0f, 5.0f, 1.0f);
+	const auto a2 = Tuple(-2.0f, 3.0f, 1.0f, 0.0f);
 
 	const auto expected = Tuple(1.0f, 1.0f, 6.0f, 1.0f);
 	auto result = a1 + a2;
@@ -115,8 +115,8 @@ Then p1 - p2 = vector(-2, -4, -6)
 
 TEST(TupleTests, PointsSubtract)
 {
-	auto a1 = Point(3.0f, 2.0f, 1.0f);
-	auto a2 = Point(5.0f, 6.0f, 7.0f);
+	const auto a1 = Point(3.0f, 2.0f, 1.0f);
+	const auto a2 = Point(5.0f, 6.0f, 7.0f);
 
 	const auto expected = Vector(-2.0f, -4.0f, -6.0f);
 	auto result = a1 - a2;
@@ -133,8 +133,8 @@ Then p - v = point(-2, -4, -6)
 
 TEST(TupleTests, SubtractVectorFromPoint)
 {
-	auto a1 = Point(3.0f, 2.0f, 1.0f);
-	auto a2 = Vector(5.0f, 6.0f, 7.0f);
+	const auto a1 = Point(3.0f, 2.0f, 1.0f);
+	const auto a2 = Vector(5.0f, 6.0f, 7.0f);
 
 	const auto expected = Point(-2.0f, -4.0f, -6.0f);
 	auto result = a1 - a2;
@@ -151,8 +151,8 @@ Then v1 - v2 = vector(-2, -4, -6)
 
 TEST(TupleTests, VectorSubtract)
 {
-	auto a1 = Vector(3.0f, 2.0f, 1.0f);
-	auto a2 = Vector(5.0f, 6.0f, 7.0f);
+	const auto a1 = Vector(3.0f, 2.0f, 1.0f);
+	const auto a2 = Vector(5.0f, 6.0f, 7.0f);
 
 	const auto expected = Vector(-2.0f, -4.0f, -6.0f);
 	auto result = a1 - a2;
@@ -168,7 +168,7 @@ Then -a = tuple(-1, 2, -3, 1)
 
 TEST(TupleTests, NegateTuple)
 {
-	auto a = Tuple(1.0f, -2.0f, 3.0f, 1.0f);
+	const auto a = Tuple(1.0f, -2.0f, 3.0f, 1.0f);
 
 	const auto expected = Tuple(-1.0f, 2.0f, -3.0f, 1.0f);
 	auto result = -a;
@@ -221,14 +221,14 @@ Then normalize(v) = approximately vector(0.26726, 0.53452, 0.80178)
 
 TEST(TupleTests, NormalizeIsCorrectForOneDirection)
 {
-	auto v = Vector(4.0f, 0.0f, 0.0f);
+	const auto v = Vector(4.0f, 0.0f, 0.0f);
 	EXPECT_TRUE(Tuple::normalize(v) == Vector(1.0f, 0.0f, 0.0f));
 }
 
 TEST(TupleTests, NormalizeIsCorrectForThreeDirections)
 {
-	auto v = Vector(1.0f, 2.0f, 3.0f);
-	auto sqrt14 = std::sqrtf(14.0f);
+	const auto v = Vector(1.0f, 2.0f, 3.0f);
+	const auto sqrt14 = std::sqrtf(14.0f);
 	EXPECT_TRUE(Tuple::normalize(v) == Vector(1.0f /sqrt14, 2.0f /sqrt14, 3.0f /sqrt14));
 }
 
@@ -240,8 +240,8 @@ Then magnitude(norm) = 1
  */
 TEST(TupleTests, NormalizeMagnitudeIs1)
 {
-	auto v = Vector(1.0f, 2.0f, 3.0f);
-	auto norm = Tuple::normalize(v);
+	const auto v = Vector(1.0f, 2.0f, 3.0f);
+	const auto norm = Tuple::normalize(v);
 	EXPECT_TRUE(Equals(norm.magnitude(), 1.0f));
 }
 
@@ -283,8 +283,8 @@ Then c1 + c2 = color(1.6, 0.7, 1.0)
 */
 TEST(ColourTests, AddColours)
 {
-	auto c1 = Colour(0.9f, 0.6f, 0.75f);
-	auto c2 = Colour(0.7f, 0.1f, 0.25f);
+	const auto c1 = Colour(0.9f, 0.6f, 0.75f);
+	const auto c2 = Colour(0.7f, 0.1f, 0.25f);
 
 	auto result = c1 + c2;
 	const auto expected = Colour(1.6f, 0.7f, 1.0f);
@@ -300,8 +300,8 @@ Then c1 - c2 = color(0.2, 0.5, 0.5)
 */
 TEST(ColourTests, SubtractColours)
 {
-	auto c1 = Colour(0.9f, 0.6f, 0.75f);
-	auto c2 = Colour(0.7f, 0.1f, 0.25f);
+	const auto c1 = Colour(0.9f, 0.6f, 0.75f);
+	const auto c2 = Colour(0.7f, 0.1f, 0.25f);
 
 	auto result = c1 - c2;
 	const auto expected = Colour(0.2f, 0.5f, 0.5f);
@@ -330,8 +330,8 @@ Then c1 * c2 = color(0.9, 0.2, 0.04)
 
 TEST(ColourTests, MultiplyColours)
 {
-	auto c1 = Colour(1.0f, 0.2f, 0.4f);
-	auto c2 = Colour(0.9f, 1.0f, 0.1f);
+	const auto c1 = Colour(1.0f, 0.2f, 0.4f);
+	const auto c2 = Colour(0.9f, 1.0f, 0.1f);
 
 	auto result = c1 * c2;
 	const auto expected = Colour(0.9f, 0.2f, 0.04f);
@@ -348,8 +348,8 @@ Then r = vector(1, 1, 0)
 
 TEST(TupleTests, ReflectAt45)
 {
-	auto v = Vector(1, -1, 0);
-	auto n = Vector(0, 1, 0);
+	const auto v = Vector(1, -1, 0);
+	const auto n = Vector(0, 1, 0);
 
 	auto r = Tuple::reflect(v, n);
 
@@ -366,8 +366,8 @@ Then r = vector(1, 0, 0)
 
 TEST(TupleTests, ReflectOffSlanted)
 {
-	auto v = Vector(0, -1, 0);
-	auto n = Vector(SQRT2DIV2, SQRT2DIV2, 0);
+	const auto v = Vector(0, -1, 0);
+	const auto n = Vector(SQRT2DIV2, SQRT2DIV2, 0);
 
 	auto r = Tuple::reflect(v, n);
 
